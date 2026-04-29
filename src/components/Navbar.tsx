@@ -20,7 +20,9 @@ export const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="fixed w-full top-0 z-50 bg-[var(--color-paper)]/90 backdrop-blur-sm border-b-2 border-[var(--color-marker)] border-dashed">
+    <nav className={`fixed w-full top-0 z-50 transition-colors duration-300 border-b-2 border-[var(--color-marker)] border-dashed ${
+      isOpen ? 'bg-[#FAFAF8]' : 'bg-[var(--color-paper)]/90 backdrop-blur-sm'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center space-x-2">
@@ -58,12 +60,15 @@ export const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div 
-        className={`fixed inset-0 top-20 z-40 bg-[var(--color-paper)] transition-transform duration-300 ease-in-out md:hidden ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-0 top-20 z-40 bg-[#FAFAF8] md:hidden overflow-hidden transition-opacity duration-300 ease-in-out ${
+          isOpen ? 'opacity-100 pointer-events-auto visible' : 'opacity-0 pointer-events-none invisible'
         }`}
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`
+        }}
       >
         <div className="flex flex-col items-center justify-start h-full pt-12 px-6 space-y-8 text-center">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-5">
+          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 transition-opacity duration-500 ${isOpen ? 'opacity-10' : 'opacity-0'}`}>
             <ScribbleStar className="w-64 h-64 text-[var(--color-marker)] rotate-12" />
           </div>
 
