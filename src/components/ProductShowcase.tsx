@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScribbleStar } from './ui/Doodles';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage } from '../hooks/useLanguage';
 
 export const ProductShowcase = () => {
   const { t } = useLanguage();

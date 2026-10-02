@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { LanguageContext, type LanguageContextType } from '../context/LanguageContext';
+import { LanguageContext, type LanguageContextType } from '../context/language-context-definition';
 
 export const useLanguage = (): LanguageContextType => {
   const context = useContext(LanguageContext);

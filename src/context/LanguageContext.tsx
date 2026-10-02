@@ -1,14 +1,6 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { translations, type Language, type Translations } from '../i18n/translations';
-
-export interface LanguageContextType {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  toggleLanguage: () => void;
-  t: Translations;
-}
-
-export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+import React, { useState, useEffect } from 'react';
+import { translations, type Language } from '../i18n/translations';
+import { LanguageContext } from './language-context-definition';
 
 const STORAGE_KEY = 'nisundor_language_preference';
 
