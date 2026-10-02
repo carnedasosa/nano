@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ScribbleStar } from './ui/Doodles';
 import { Menu, X } from 'lucide-react';
+import { useLanguage } from '../hooks/useLanguage';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -32,25 +35,30 @@ export const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center font-heading font-medium">
             <a href="#about" className="hover:text-[var(--color-wine)] transition-colors relative group">
-              ethos
+              {t.nav.ethos}
               <span className="absolute -bottom-1 left-0 w-full h-1 bg-[var(--color-wine)] scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
             </a>
             <a href="#shop" className="hover:text-[var(--color-wine)] transition-colors relative group">
-              shop
+              {t.nav.shop}
               <span className="absolute -bottom-1 left-0 w-full h-1 bg-[var(--color-wine)] scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
             </a>
+            
+            {/* Language Switcher Desktop */}
+            <LanguageSwitcher />
+
             <a href="#shop" className="px-5 py-2 rough-border hover:bg-[var(--color-marker)] hover:text-[var(--color-paper)] transition-all flex items-center space-x-2 -rotate-1 hover:rotate-0">
               <ScribbleStar className="w-4 h-4" />
-              <span>buy now</span>
+              <span>{t.nav.buyNow}</span>
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Menu Button & Quick Switcher */}
+          <div className="md:hidden flex items-center space-x-3">
+            <LanguageSwitcher />
             <button 
               onClick={toggleMenu}
               className="p-2 border-2 border-[var(--color-marker)] rounded-md hover:bg-[var(--color-marker)] hover:text-[var(--color-paper)] transition-colors"
-              aria-label="Toggle menu"
+              aria-label={t.nav.menuToggle}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -77,28 +85,31 @@ export const Navbar = () => {
             onClick={() => setIsOpen(false)}
             className="text-5xl font-heading font-black uppercase tracking-tighter hover:text-[var(--color-wine)] transition-colors"
           >
-            ethos
+            {t.nav.ethos}
           </a>
           <a 
             href="#shop" 
             onClick={() => setIsOpen(false)}
             className="text-5xl font-heading font-black uppercase tracking-tighter hover:text-[var(--color-wine)] transition-colors"
           >
-            shop
+            {t.nav.shop}
           </a>
           
-          <div className="pt-8 w-full">
+          <div className="pt-8 w-full flex flex-col items-center gap-6">
             <a 
               href="#shop" 
               onClick={() => setIsOpen(false)}
               className="block w-full py-6 rough-border bg-[var(--color-marker)] text-[var(--color-paper)] font-heading font-bold text-2xl uppercase tracking-widest hover:bg-[var(--color-wine)] transition-colors -rotate-2"
             >
-              Buy the drop
+              {t.nav.buyTheDrop}
             </a>
+
+            {/* Prominent mobile switcher */}
+            <LanguageSwitcher variant="mobile" />
           </div>
 
           <p className="font-body text-[var(--color-pencil)] italic pt-12">
-            "Art is what you can get away with."
+            {t.about.quote}
           </p>
         </div>
       </div>

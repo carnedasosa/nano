@@ -1,7 +1,10 @@
 import React from 'react';
 import { StrikeThrough } from './ui/Doodles';
+import { useLanguage } from '../hooks/useLanguage';
 
 export const AboutBrand = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="py-32 relative bg-[var(--color-marker)] text-[var(--color-paper)] overflow-hidden">
       {/* Decorative tape elements */}
@@ -29,22 +32,25 @@ export const AboutBrand = () => {
           <div className="space-y-8">
             <div className="inline-block relative">
               <h2 className="text-5xl md:text-6xl font-heading font-black uppercase tracking-tighter">
-                The Ethos
+                {t.about.title}
               </h2>
               <StrikeThrough className="text-[var(--color-wine)] top-2 md:top-4 opacity-80" />
             </div>
 
             <div className="space-y-6 font-body text-lg md:text-xl text-[var(--color-paper)]/80">
               <p>
-                We grew tired of the <span className="text-[var(--color-wine)] font-bold font-heading line-through decoration-white">perfect</span> aesthetic. 
-                Nisundor is born from the streets, the late nights, and the beautiful mistakes.
+                {t.about.p1Part1}{' '}
+                <span className="text-[var(--color-wine)] font-bold font-heading line-through decoration-white">
+                  {t.about.p1Highlight}
+                </span>{' '}
+                {t.about.p1Part2}
               </p>
               <p>
-                It's not luxury. It's not fast fashion. It's a canvas for the rebellious, the creatives, and those who appreciate the ironic subtext of a well-placed wine stain.
+                {t.about.p2}
               </p>
               <div className="pt-6 border-t-2 border-dashed border-[var(--color-paper)]/20">
                 <p className="font-heading font-bold text-2xl text-[var(--color-kraft)] italic">
-                  "Art is what you can get away with."
+                  {t.about.quote}
                 </p>
               </div>
             </div>

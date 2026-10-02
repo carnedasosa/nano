@@ -1,7 +1,10 @@
 import React from 'react';
 import { WineStain, RoughArrow, ScribbleStar } from './ui/Doodles';
+import { useLanguage } from '../hooks/useLanguage';
 
 export const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-32 pb-32 overflow-hidden">
       {/* Background decorations */}
@@ -20,26 +23,26 @@ export const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
         <div className="relative inline-block mb-6">
           <span className="absolute -top-5 left-0 md:-left-8 text-sm font-body text-[var(--color-wine)] -rotate-6 font-bold uppercase tracking-widest border-b-2 border-dashed border-[var(--color-wine)]">
-            not just a tee
+            {t.hero.badge}
           </span>
           <h1 className="text-6xl md:text-9xl font-heading font-black tracking-tighter text-[var(--color-marker)] leading-none uppercase mix-blend-color-burn">
-            Studied <br /> <span className="text-[var(--color-paper)]" style={{ WebkitTextStroke: '2px var(--color-marker)' }}>Imperfect.</span>
+            {t.hero.titleLine1} <br /> <span className="text-[var(--color-paper)]" style={{ WebkitTextStroke: '2px var(--color-marker)' }}>{t.hero.titleLine2}</span>
           </h1>
         </div>
         
         <p className="mt-8 max-w-2xl text-xl md:text-2xl font-body text-[var(--color-pencil)] font-medium leading-relaxed bg-[var(--color-paper)]/50 backdrop-blur-sm p-4 rough-border-sm rotate-1">
-          A rebellious take on everyday wear. The spilled wine isn't an accident, it's a statement.
+          {t.hero.description}
         </p>
 
         <div className="mt-12 flex flex-col sm:flex-row items-center gap-6 relative">
           <a href="#shop" className="group relative px-10 py-4 font-heading font-bold text-xl uppercase tracking-widest bg-[var(--color-marker)] text-[var(--color-paper)] hover:bg-[var(--color-wine)] transition-colors rough-border -rotate-2 hover:rotate-0 inline-flex items-center">
-            Shop the drop
+            {t.hero.cta}
             <RoughArrow className="ml-4 w-10 text-[var(--color-paper)] group-hover:translate-x-2 transition-transform" />
           </a>
           
           <div className="absolute -right-24 top-1/2 -translate-y-1/2 hidden md:block">
             <p className="font-body text-sm text-[var(--color-pencil)] rotate-6 max-w-[120px]">
-              *limited stock, obviously
+              {t.hero.limitedStock}
             </p>
           </div>
         </div>

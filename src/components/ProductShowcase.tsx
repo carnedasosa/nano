@@ -1,14 +1,17 @@
 import React from 'react';
 import { ScribbleStar } from './ui/Doodles';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ProductShowcase = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="shop" className="py-24 relative bg-[var(--color-paper)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16 relative">
           <h2 className="text-5xl md:text-7xl font-heading font-black uppercase tracking-tighter text-[var(--color-marker)]">
-            The Drop
+            {t.showcase.title}
           </h2>
           <div className="absolute top-0 right-1/4 md:right-1/3 -translate-y-1/2">
             <ScribbleStar className="text-[var(--color-wine)] w-8 h-8 rotate-12" />
@@ -29,8 +32,8 @@ export const ProductShowcase = () => {
               
               <div className="mt-4 flex justify-between items-end px-2">
                 <div>
-                  <h3 className="font-heading font-bold text-xl uppercase">Core Tee - Front</h3>
-                  <p className="font-body text-[var(--color-pencil)]">100% Cotton. 0% F*cks.</p>
+                  <h3 className="font-heading font-bold text-xl uppercase">{t.showcase.product1Title}</h3>
+                  <p className="font-body text-[var(--color-pencil)]">{t.showcase.product1Desc}</p>
                 </div>
                 <span className="font-heading font-black text-xl">€45</span>
               </div>
@@ -45,7 +48,7 @@ export const ProductShowcase = () => {
                 
                 {/* Out of stock tag - ironic */}
                 <div className="absolute top-4 -right-8 bg-[var(--color-wine)] text-[var(--color-paper)] font-heading font-bold uppercase tracking-wider py-1 px-10 rotate-45 border-y-2 border-dashed border-[var(--color-paper)]">
-                  Almost gone
+                  {t.showcase.almostGone}
                 </div>
               </div>
               {/* Fake tape */}
@@ -53,8 +56,8 @@ export const ProductShowcase = () => {
               
               <div className="mt-4 flex justify-between items-end px-2">
                 <div>
-                  <h3 className="font-heading font-bold text-xl uppercase">Core Tee - Back</h3>
-                  <p className="font-body text-[var(--color-pencil)]">Wait, look at the back.</p>
+                  <h3 className="font-heading font-bold text-xl uppercase">{t.showcase.product2Title}</h3>
+                  <p className="font-body text-[var(--color-pencil)]">{t.showcase.product2Desc}</p>
                 </div>
                 <span className="font-heading font-black text-xl">€45</span>
               </div>
